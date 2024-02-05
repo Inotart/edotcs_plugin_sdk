@@ -1,0 +1,1 @@
+protoc --go_out=./drpc/ --go_opt=paths=source_relative  ./edotcs.proto
