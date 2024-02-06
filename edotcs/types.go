@@ -9,3 +9,8 @@ type Plugin interface {
 	Player_Message(player string, message string) error // 玩家消息
 	Menu(player string, word []string) error            // 玩家菜单事件
 }
+
+type Player struct {
+	Name string // 玩家名称
+	UUID string // 玩家UUID
+}

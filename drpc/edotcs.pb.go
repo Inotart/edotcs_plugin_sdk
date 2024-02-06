@@ -659,6 +659,221 @@ func (x *Say_To) GetMessage() string {
 	return ""
 }
 
+// 获取玩家信息
+type Get_Player_Info struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Player string `protobuf:"bytes,1,opt,name=Player,proto3" json:"Player,omitempty"` // 玩家名
+}
+
+func (x *Get_Player_Info) Reset() {
+	*x = Get_Player_Info{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_edotcs_proto_msgTypes[11]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Get_Player_Info) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Get_Player_Info) ProtoMessage() {}
+
+func (x *Get_Player_Info) ProtoReflect() protoreflect.Message {
+	mi := &file_edotcs_proto_msgTypes[11]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Get_Player_Info.ProtoReflect.Descriptor instead.
+func (*Get_Player_Info) Descriptor() ([]byte, []int) {
+	return file_edotcs_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *Get_Player_Info) GetPlayer() string {
+	if x != nil {
+		return x.Player
+	}
+	return ""
+}
+
+// 返回玩家信息
+type Return_Player_Info struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Is_True bool                `protobuf:"varint,1,opt,name=Is_True,json=IsTrue,proto3" json:"Is_True,omitempty"` // 是否获取成功
+	Message string              `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`              // 获取失败原因
+	Player  *Plugin_Info_Player `protobuf:"bytes,3,opt,name=Player,proto3" json:"Player,omitempty"`                // 玩家信息
+}
+
+func (x *Return_Player_Info) Reset() {
+	*x = Return_Player_Info{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_edotcs_proto_msgTypes[12]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Return_Player_Info) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Return_Player_Info) ProtoMessage() {}
+
+func (x *Return_Player_Info) ProtoReflect() protoreflect.Message {
+	mi := &file_edotcs_proto_msgTypes[12]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Return_Player_Info.ProtoReflect.Descriptor instead.
+func (*Return_Player_Info) Descriptor() ([]byte, []int) {
+	return file_edotcs_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *Return_Player_Info) GetIs_True() bool {
+	if x != nil {
+		return x.Is_True
+	}
+	return false
+}
+
+func (x *Return_Player_Info) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
+}
+
+func (x *Return_Player_Info) GetPlayer() *Plugin_Info_Player {
+	if x != nil {
+		return x.Player
+	}
+	return nil
+}
+
+// 获取在线玩家信息
+type Get_Online_Player_Info struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *Get_Online_Player_Info) Reset() {
+	*x = Get_Online_Player_Info{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_edotcs_proto_msgTypes[13]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Get_Online_Player_Info) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Get_Online_Player_Info) ProtoMessage() {}
+
+func (x *Get_Online_Player_Info) ProtoReflect() protoreflect.Message {
+	mi := &file_edotcs_proto_msgTypes[13]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Get_Online_Player_Info.ProtoReflect.Descriptor instead.
+func (*Get_Online_Player_Info) Descriptor() ([]byte, []int) {
+	return file_edotcs_proto_rawDescGZIP(), []int{13}
+}
+
+// 返回在线玩家信息
+type Return_Online_Player_Info struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Is_True bool                  `protobuf:"varint,1,opt,name=Is_True,json=IsTrue,proto3" json:"Is_True,omitempty"` // 是否获取成功
+	Message string                `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`              // 获取失败原因
+	Players []*Plugin_Info_Player `protobuf:"bytes,3,rep,name=Players,proto3" json:"Players,omitempty"`              // 在线玩家信息
+}
+
+func (x *Return_Online_Player_Info) Reset() {
+	*x = Return_Online_Player_Info{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_edotcs_proto_msgTypes[14]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Return_Online_Player_Info) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Return_Online_Player_Info) ProtoMessage() {}
+
+func (x *Return_Online_Player_Info) ProtoReflect() protoreflect.Message {
+	mi := &file_edotcs_proto_msgTypes[14]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Return_Online_Player_Info.ProtoReflect.Descriptor instead.
+func (*Return_Online_Player_Info) Descriptor() ([]byte, []int) {
+	return file_edotcs_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *Return_Online_Player_Info) GetIs_True() bool {
+	if x != nil {
+		return x.Is_True
+	}
+	return false
+}
+
+func (x *Return_Online_Player_Info) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
+}
+
+func (x *Return_Online_Player_Info) GetPlayers() []*Plugin_Info_Player {
+	if x != nil {
+		return x.Players
+	}
+	return nil
+}
+
 // 插件版本,采用 x.y.z 命名规则
 type Version struct {
 	state         protoimpl.MessageState
@@ -673,7 +888,7 @@ type Version struct {
 func (x *Version) Reset() {
 	*x = Version{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_edotcs_proto_msgTypes[11]
+		mi := &file_edotcs_proto_msgTypes[15]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -686,7 +901,7 @@ func (x *Version) String() string {
 func (*Version) ProtoMessage() {}
 
 func (x *Version) ProtoReflect() protoreflect.Message {
-	mi := &file_edotcs_proto_msgTypes[11]
+	mi := &file_edotcs_proto_msgTypes[15]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -699,7 +914,7 @@ func (x *Version) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Version.ProtoReflect.Descriptor instead.
 func (*Version) Descriptor() ([]byte, []int) {
-	return file_edotcs_proto_rawDescGZIP(), []int{11}
+	return file_edotcs_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *Version) GetMajor() int64 {
@@ -721,6 +936,61 @@ func (x *Version) GetPatch() int64 {
 		return x.Patch
 	}
 	return 0
+}
+
+type Plugin_Info_Player struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Player string `protobuf:"bytes,1,opt,name=Player,proto3" json:"Player,omitempty"` // 玩家名
+	UUID   string `protobuf:"bytes,2,opt,name=UUID,proto3" json:"UUID,omitempty"`     // 玩家UUID
+}
+
+func (x *Plugin_Info_Player) Reset() {
+	*x = Plugin_Info_Player{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_edotcs_proto_msgTypes[16]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Plugin_Info_Player) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Plugin_Info_Player) ProtoMessage() {}
+
+func (x *Plugin_Info_Player) ProtoReflect() protoreflect.Message {
+	mi := &file_edotcs_proto_msgTypes[16]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Plugin_Info_Player.ProtoReflect.Descriptor instead.
+func (*Plugin_Info_Player) Descriptor() ([]byte, []int) {
+	return file_edotcs_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *Plugin_Info_Player) GetPlayer() string {
+	if x != nil {
+		return x.Player
+	}
+	return ""
+}
+
+func (x *Plugin_Info_Player) GetUUID() string {
+	if x != nil {
+		return x.UUID
+	}
+	return ""
 }
 
 var File_edotcs_proto protoreflect.FileDescriptor
@@ -782,15 +1052,39 @@ var file_edotcs_proto_rawDesc = []byte{
 	0x0a, 0x06, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06,
 	0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x12, 0x18, 0x0a, 0x07, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67,
 	0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65,
-	0x22, 0x4b, 0x0a, 0x07, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x14, 0x0a, 0x05, 0x4d,
-	0x61, 0x6a, 0x6f, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x4d, 0x61, 0x6a, 0x6f,
-	0x72, 0x12, 0x14, 0x0a, 0x05, 0x4d, 0x69, 0x6e, 0x6f, 0x72, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03,
-	0x52, 0x05, 0x4d, 0x69, 0x6e, 0x6f, 0x72, 0x12, 0x14, 0x0a, 0x05, 0x50, 0x61, 0x74, 0x63, 0x68,
-	0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x50, 0x61, 0x74, 0x63, 0x68, 0x42, 0x2b, 0x5a,
-	0x29, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x49, 0x6e, 0x6f, 0x74,
-	0x61, 0x72, 0x74, 0x2f, 0x65, 0x64, 0x6f, 0x74, 0x63, 0x73, 0x5f, 0x70, 0x6c, 0x75, 0x67, 0x69,
-	0x6e, 0x5f, 0x73, 0x64, 0x6b, 0x2f, 0x67, 0x72, 0x70, 0x63, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x33,
+	0x22, 0x29, 0x0a, 0x0f, 0x47, 0x65, 0x74, 0x5f, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x5f, 0x49,
+	0x6e, 0x66, 0x6f, 0x12, 0x16, 0x0a, 0x06, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x06, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x22, 0x7b, 0x0a, 0x12, 0x52,
+	0x65, 0x74, 0x75, 0x72, 0x6e, 0x5f, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x5f, 0x49, 0x6e, 0x66,
+	0x6f, 0x12, 0x17, 0x0a, 0x07, 0x49, 0x73, 0x5f, 0x54, 0x72, 0x75, 0x65, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x08, 0x52, 0x06, 0x49, 0x73, 0x54, 0x72, 0x75, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x6d, 0x65,
+	0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6d, 0x65, 0x73,
+	0x73, 0x61, 0x67, 0x65, 0x12, 0x32, 0x0a, 0x06, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x18, 0x03,
+	0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x65, 0x64, 0x6f, 0x74, 0x63, 0x73, 0x2e, 0x50, 0x6c,
+	0x75, 0x67, 0x69, 0x6e, 0x5f, 0x49, 0x6e, 0x66, 0x6f, 0x5f, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72,
+	0x52, 0x06, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x22, 0x18, 0x0a, 0x16, 0x47, 0x65, 0x74, 0x5f,
+	0x4f, 0x6e, 0x6c, 0x69, 0x6e, 0x65, 0x5f, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x5f, 0x49, 0x6e,
+	0x66, 0x6f, 0x22, 0x84, 0x01, 0x0a, 0x19, 0x52, 0x65, 0x74, 0x75, 0x72, 0x6e, 0x5f, 0x4f, 0x6e,
+	0x6c, 0x69, 0x6e, 0x65, 0x5f, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x5f, 0x49, 0x6e, 0x66, 0x6f,
+	0x12, 0x17, 0x0a, 0x07, 0x49, 0x73, 0x5f, 0x54, 0x72, 0x75, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x08, 0x52, 0x06, 0x49, 0x73, 0x54, 0x72, 0x75, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x6d, 0x65, 0x73,
+	0x73, 0x61, 0x67, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6d, 0x65, 0x73, 0x73,
+	0x61, 0x67, 0x65, 0x12, 0x34, 0x0a, 0x07, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x73, 0x18, 0x03,
+	0x20, 0x03, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x65, 0x64, 0x6f, 0x74, 0x63, 0x73, 0x2e, 0x50, 0x6c,
+	0x75, 0x67, 0x69, 0x6e, 0x5f, 0x49, 0x6e, 0x66, 0x6f, 0x5f, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72,
+	0x52, 0x07, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x73, 0x22, 0x4b, 0x0a, 0x07, 0x56, 0x65, 0x72,
+	0x73, 0x69, 0x6f, 0x6e, 0x12, 0x14, 0x0a, 0x05, 0x4d, 0x61, 0x6a, 0x6f, 0x72, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x03, 0x52, 0x05, 0x4d, 0x61, 0x6a, 0x6f, 0x72, 0x12, 0x14, 0x0a, 0x05, 0x4d, 0x69,
+	0x6e, 0x6f, 0x72, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x4d, 0x69, 0x6e, 0x6f, 0x72,
+	0x12, 0x14, 0x0a, 0x05, 0x50, 0x61, 0x74, 0x63, 0x68, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52,
+	0x05, 0x50, 0x61, 0x74, 0x63, 0x68, 0x22, 0x40, 0x0a, 0x12, 0x50, 0x6c, 0x75, 0x67, 0x69, 0x6e,
+	0x5f, 0x49, 0x6e, 0x66, 0x6f, 0x5f, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x12, 0x16, 0x0a, 0x06,
+	0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x50, 0x6c,
+	0x61, 0x79, 0x65, 0x72, 0x12, 0x12, 0x0a, 0x04, 0x55, 0x55, 0x49, 0x44, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x04, 0x55, 0x55, 0x49, 0x44, 0x42, 0x2b, 0x5a, 0x29, 0x67, 0x69, 0x74, 0x68,
+	0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x49, 0x6e, 0x6f, 0x74, 0x61, 0x72, 0x74, 0x2f, 0x65,
+	0x64, 0x6f, 0x74, 0x63, 0x73, 0x5f, 0x70, 0x6c, 0x75, 0x67, 0x69, 0x6e, 0x5f, 0x73, 0x64, 0x6b,
+	0x2f, 0x64, 0x72, 0x70, 0x63, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -805,29 +1099,36 @@ func file_edotcs_proto_rawDescGZIP() []byte {
 	return file_edotcs_proto_rawDescData
 }
 
-var file_edotcs_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_edotcs_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
 var file_edotcs_proto_goTypes = []interface{}{
-	(*New_Type)(nil),       // 0: edotcs.New_Type
-	(*TypeList)(nil),       // 1: edotcs.Type_list
-	(*Plugin)(nil),         // 2: edotcs.Plugin
-	(*Player_Message)(nil), // 3: edotcs.Player_Message
-	(*PlayerJoin)(nil),     // 4: edotcs.Player_join
-	(*Player_Left)(nil),    // 5: edotcs.Player_Left
-	(*Menu)(nil),           // 6: edotcs.Menu
-	(*Group_Message)(nil),  // 7: edotcs.Group_Message
-	(*Heart_Beat)(nil),     // 8: edotcs.Heart_Beat
-	(*SendCmd)(nil),        // 9: edotcs.SendCmd
-	(*Say_To)(nil),         // 10: edotcs.Say_To
-	(*Version)(nil),        // 11: edotcs.Version
+	(*New_Type)(nil),                  // 0: edotcs.New_Type
+	(*TypeList)(nil),                  // 1: edotcs.Type_list
+	(*Plugin)(nil),                    // 2: edotcs.Plugin
+	(*Player_Message)(nil),            // 3: edotcs.Player_Message
+	(*PlayerJoin)(nil),                // 4: edotcs.Player_join
+	(*Player_Left)(nil),               // 5: edotcs.Player_Left
+	(*Menu)(nil),                      // 6: edotcs.Menu
+	(*Group_Message)(nil),             // 7: edotcs.Group_Message
+	(*Heart_Beat)(nil),                // 8: edotcs.Heart_Beat
+	(*SendCmd)(nil),                   // 9: edotcs.SendCmd
+	(*Say_To)(nil),                    // 10: edotcs.Say_To
+	(*Get_Player_Info)(nil),           // 11: edotcs.Get_Player_Info
+	(*Return_Player_Info)(nil),        // 12: edotcs.Return_Player_Info
+	(*Get_Online_Player_Info)(nil),    // 13: edotcs.Get_Online_Player_Info
+	(*Return_Online_Player_Info)(nil), // 14: edotcs.Return_Online_Player_Info
+	(*Version)(nil),                   // 15: edotcs.Version
+	(*Plugin_Info_Player)(nil),        // 16: edotcs.Plugin_Info_Player
 }
 var file_edotcs_proto_depIdxs = []int32{
 	0,  // 0: edotcs.Type_list.Types:type_name -> edotcs.New_Type
-	11, // 1: edotcs.Plugin.Version:type_name -> edotcs.Version
-	2,  // [2:2] is the sub-list for method output_type
-	2,  // [2:2] is the sub-list for method input_type
-	2,  // [2:2] is the sub-list for extension type_name
-	2,  // [2:2] is the sub-list for extension extendee
-	0,  // [0:2] is the sub-list for field type_name
+	15, // 1: edotcs.Plugin.Version:type_name -> edotcs.Version
+	16, // 2: edotcs.Return_Player_Info.Player:type_name -> edotcs.Plugin_Info_Player
+	16, // 3: edotcs.Return_Online_Player_Info.Players:type_name -> edotcs.Plugin_Info_Player
+	4,  // [4:4] is the sub-list for method output_type
+	4,  // [4:4] is the sub-list for method input_type
+	4,  // [4:4] is the sub-list for extension type_name
+	4,  // [4:4] is the sub-list for extension extendee
+	0,  // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_edotcs_proto_init() }
@@ -969,7 +1270,67 @@ func file_edotcs_proto_init() {
 			}
 		}
 		file_edotcs_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Get_Player_Info); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_edotcs_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Return_Player_Info); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_edotcs_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Get_Online_Player_Info); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_edotcs_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Return_Online_Player_Info); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_edotcs_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Version); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_edotcs_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Plugin_Info_Player); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -988,7 +1349,7 @@ func file_edotcs_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_edotcs_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   12,
+			NumMessages:   17,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

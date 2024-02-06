@@ -3,6 +3,7 @@ package edotcs
 import (
 	"bytes"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"time"
@@ -165,6 +166,72 @@ func (edotcs *EDotCS) Say_To(player string, Message string) {
 		return
 	}
 	edotcs.client.Post(fmt.Sprintf("http://%s/dotcs/v8/sayto", edotcs.Ip), "application/octet-stream", bytes.NewReader(data))
+}
+func (edotcs *EDotCS) Get_Player(player string) (Player, error) {
+	Get_Player := drpc.Get_Player_Info{
+		Player: player,
+	}
+
+	data, err := proto.Marshal(&Get_Player)
+	if err != nil {
+		log.Println("marshal sendcmd failed")
+		return Player{}, err
+	}
+	resp, err := edotcs.client.Post(fmt.Sprintf("http://%s/dotcs/v8/getplayer", edotcs.Ip), "application/octet-stream", bytes.NewReader(data))
+	if err != nil {
+		return Player{}, err
+	}
+	resp_data, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return Player{}, err
+	}
+	player_info := drpc.Return_Player_Info{}
+	err = proto.Unmarshal(resp_data, &player_info)
+	if err != nil {
+		return Player{}, err
+	}
+	if !player_info.Is_True {
+		return Player{}, fmt.Errorf(player_info.GetMessage())
+	}
+	resp.Body.Close()
+	return Player{
+		Name: player_info.Player.GetPlayer(),
+		UUID: player_info.Player.GetUUID()}, nil
+}
+func (edotcs *EDotCS) Get_Player_List() ([]Player, error) {
+	Get_Player := drpc.Get_Online_Player_Info{}
+
+	data, err := proto.Marshal(&Get_Player)
+	if err != nil {
+		log.Println("marshal sendcmd failed")
+		return []Player{}, err
+	}
+	resp, err := edotcs.client.Post(fmt.Sprintf("http://%s/dotcs/v8/getplayerlist", edotcs.Ip), "application/octet-stream", bytes.NewReader(data))
+	if err != nil {
+		return []Player{}, err
+	}
+	resp_data, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return []Player{}, err
+	}
+	player_info := drpc.Return_Online_Player_Info{}
+	err = proto.Unmarshal(resp_data, &player_info)
+	if err != nil {
+		return []Player{}, err
+	}
+	if !player_info.Is_True {
+		return []Player{}, fmt.Errorf(player_info.GetMessage())
+	}
+	resp.Body.Close()
+	players := make([]Player, len(player_info.Players))
+	for _, info := range player_info.Players {
+		players = append(players, Player{
+			Name: info.GetPlayer(),
+			UUID: info.GetUUID(),
+		})
+
+	}
+	return players, nil
 }
 func NewEDotCS(Name string, Ip string, Author string, Version [3]int64, Menu_key string, Menu_tip string, Description string) *EDotCS {
 	edotcs := EDotCS{
