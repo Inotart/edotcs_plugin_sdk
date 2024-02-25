@@ -60,6 +60,32 @@ message Menu{
     string Player=2;// 玩家名 
 }
 /*
+玩家私聊机器人事件
+*/
+message Player_Whisper{
+    string Player=1;// 玩家名
+    string Message=2;// 玩家消息
+}
+/*
+更新NBT方块事件 BlockActorData
+*/
+message BlockActorData{
+    BlockPos Position=1;// 方块位置
+    bytes NBT_Data=2;// NBT数据
+}
+/*
+系统消息
+*/
+message System_Message{
+    bool    NeedsTranslation=1;
+   string SourceName=2;
+    string  Message=3;
+    repeated string Parameters=4;
+    string XUID =5;
+    string PlatformChatID =6;
+    string PlayerRuntimeID =7;
+}
+/*
 q群消息
 */
 message Group_Message{
@@ -131,4 +157,9 @@ message Version {
 message Plugin_Info_Player{
     string Player=1;// 玩家名
     string UUID=2;// 玩家UUID
+}
+message BlockPos{
+    int32 X=1;
+    int32 Y=2;
+    int32 Z=3;
 }

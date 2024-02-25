@@ -12,10 +12,8 @@ type cake struct {
 	EDotCS *edotcs.EDotCS
 }
 
-// 用户输入菜单命令后执行,这里的例子是 .eat art
 func (bp *cake) Player_Message(player string, message string) error {
-	fmt.Println(bp.EDotCS.Get_Player_List()) // 获取玩家信息
-	// bp.EDotCS.Say_To(player, "你想吃什么大饼？") // 发送消息给玩家
+	fmt.Println("玩家", player, "输入指令", message)
 	return nil
 }
 func main() {

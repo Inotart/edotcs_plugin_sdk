@@ -29,3 +29,16 @@ func (bp *BasePlugin) Player_Message(player string, message string) error {
 func (bp *BasePlugin) Menu(player string, menu []string) error {
 	return nil
 }
+
+func (bp *BasePlugin) Player_Whisper(player string, message string) error             { return nil } // 玩家私聊
+func (bp *BasePlugin) BlockActorData(Position BlockPos, NBTData map[string]any) error { return nil } // NBT方块数据更新
+func (bp *BasePlugin) System_Message(
+	NeedsTranslation bool,
+	SourceName string,
+	Message string,
+	Parameters []string,
+	XUID string,
+	PlatformChatID string,
+	PlayerRuntimeID string) error {
+	return nil
+} // 系统消息

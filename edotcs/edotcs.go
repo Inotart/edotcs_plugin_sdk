@@ -2,6 +2,7 @@ package edotcs
 
 import (
 	"bytes"
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -125,6 +126,40 @@ func (edotcs *EDotCS) Listen() {
 				continue
 			}
 			edotcs.Plugins.Menu(message.GetPlayer(), message.GetWord())
+		case 5:
+			// 接收到私聊消息
+			message := drpc.Player_Whisper{}
+			err = proto.Unmarshal(p[1:], &message)
+			if err != nil {
+				log.Println("unmarshal private_message failed")
+				continue
+			}
+			edotcs.Plugins.Player_Whisper(message.GetPlayer(), message.GetMessage())
+		case 6:
+			// 接收到BlockActorData
+			message := drpc.BlockActorData{}
+			err = proto.Unmarshal(p[1:], &message)
+			if err != nil {
+				log.Println("unmarshal blockactordata failed")
+				continue
+			}
+			NBT_Data := map[string]any{}
+			err := json.Unmarshal(message.GetNBT_Data(), &NBT_Data)
+			if err != nil {
+				log.Println("unmarshal nbt_data failed")
+				continue
+			}
+			Position := BlockPos{message.GetPosition().GetX(), message.GetPosition().GetY(), message.GetPosition().GetZ()}
+			edotcs.Plugins.BlockActorData(Position, NBT_Data)
+		case 7:
+			// 接收到系统消息
+			message := drpc.System_Message{}
+			err = proto.Unmarshal(p[1:], &message)
+			if err != nil {
+				log.Println("unmarshal system_message failed")
+				continue
+			}
+			edotcs.Plugins.System_Message(message.GetNeedsTranslation(), message.GetSourceName(), message.GetMessage(), message.GetParameters(), message.GetXUID(), message.GetPlatformChatID(), message.GetPlayerRuntimeID())
 		default:
 			log.Println("unknown message type", p[0])
 		}
